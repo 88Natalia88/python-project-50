@@ -11,6 +11,7 @@ def main():
         "-f", "--format",
         default="plain",
         choices=["plain", "json"],
+        metavar="FORMAT",
         help="set format of output"
     )
     parser.parse_args()
