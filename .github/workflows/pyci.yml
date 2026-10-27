@@ -2,9 +2,9 @@ name: Python CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
+    branches: [ main ]
 
 permissions:
   contents: read
@@ -16,22 +16,23 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
+
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v4
+
+      # Официальный экшен для быстрой установки uv и Python
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
         with:
-          persist-credentials: false
-      # Python, uv, ruff и ty ставятся из mise.toml
-      - uses: jdx/mise-action@v5
-        with:
-            install: true
+          enable-cache: true
+          python-version: "3.12" # Указываем ту же версию, что и в pyproject.toml
+
       - name: Install dependencies
-        # run: make install
-        run: mise exec -- make install
-      - name: Run checks
-        run: mise exec -- hk check --all
-      # Порог покрытия задан в pyproject.toml ([tool.coverage.report] fail_under),
-      # поэтому шаг падает при просадке покрытия, и бейджик CI отражает в том числе его
+        run: make install
+
+      - name: Run linter
+        run: make lint
+
       - name: Run test coverage
-        # run: make test-coverage
-        run: mise exec -- make test-coverage
+        run: make test-coverage
