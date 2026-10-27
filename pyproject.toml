@@ -35,6 +35,9 @@ addopts = "--cov=. --cov-report=term-missing"
 
 [tool.coverage.run]
 source = ["gendiff"]
+omit = [
+    "gendiff/scripts/*"
+]
 
 [tool.coverage.report]
 fail_under = 80
