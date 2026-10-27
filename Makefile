@@ -1,5 +1,5 @@
 install:
-	uv sync
+	uv sync --python $(shell mise which python)
 
 test:
 	uv run pytest
