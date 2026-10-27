@@ -2,7 +2,7 @@ import json
 
 
 def read_file(file_path):
-    with open(file_path, "r") as file:
+    with open(file_path) as file:
         return json.load(file)
 
 
@@ -28,14 +28,15 @@ def generate_diff(file_path1, file_path2):
 
     for key in all_keys:
         if key in data1 and key not in data2:
-           result.append(f"  - {key}: {generate_str(data1[key])}")
+            result.append(f"  - {key}: {generate_str(data1[key])}")
         elif key in data2 and key not in data1:
-           result.append(f"  + {key}: {generate_str(data2[key])}")
+            result.append(f"  + {key}: {generate_str(data2[key])}")
         elif key in data1 and key in data2 and data1[key] == data2[key]:
             result.append(f"    {key}: {generate_str(data1[key])}")
         elif key in data1 and key in data2 and data1[key] != data2[key]:
-            result.append(f"  - {key}: {generate_str(data1[key])}")
-            result.append(f"  + {key}: {generate_str(data2[key])}")
+            # result.append(f"  - {key}: {generate_str(data1[key])}")
+            # result.append(f"  + {key}: {generate_str(data2[key])}")
+            result.extend((f"  - {key}: {generate_str(data1[key])}", f"  + {key}: {generate_str(data2[key])}"))
 
     return "{\n" + "\n".join(result) + "\n}"
 

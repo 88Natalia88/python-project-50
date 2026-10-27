@@ -1,5 +1,7 @@
 from pathlib import Path
+
 from gendiff import generate_diff
+
 
 def get_test_data_path(filename):
     return Path(__file__).parent / "test_data" / filename
@@ -17,6 +19,3 @@ def test_diff_json():
     expected = read_file("expected.txt").strip()
 
     assert actual == expected
-
-def test_diff_delete_key():
-    return
