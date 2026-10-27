@@ -36,7 +36,8 @@ def generate_diff(file_path1, file_path2):
         elif key in data1 and key in data2 and data1[key] != data2[key]:
             # result.append(f"  - {key}: {generate_str(data1[key])}")
             # result.append(f"  + {key}: {generate_str(data2[key])}")
-            result.extend((f"  - {key}: {generate_str(data1[key])}", f"  + {key}: {generate_str(data2[key])}"))
+            result.extend((f"  - {key}: {generate_str(data1[key])}", 
+                           f"  + {key}: {generate_str(data2[key])}"))
 
     return "{\n" + "\n".join(result) + "\n}"
 
