@@ -1,9 +1,15 @@
-import json
 
+from pathlib import Path
+
+from gendiff.parser import parse
 
 def read_file(file_path):
+    path = Path(file_path)
+    format_content = path.suffix[1:].lower()
     with open(file_path) as file:
-        return json.load(file)
+        content = file.read()
+    
+    return parse(content, format_content)
 
 
 def generate_str(value):

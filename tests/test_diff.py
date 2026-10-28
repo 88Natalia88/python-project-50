@@ -1,3 +1,5 @@
+import pytest
+
 from pathlib import Path
 
 from gendiff import generate_diff
@@ -11,11 +13,12 @@ def read_file(filename):
     return get_test_data_path(filename).read_text()
 
 
-def test_diff_json():
-    path_json1 = get_test_data_path('filepath1.json')
-    path_json2 = get_test_data_path('filepath2.json')
+@pytest.mark.parametrize("extension", ["json", "yml", "yaml"])
+def test_generate_diff(extension):
+    path1 = get_test_data_path(f'filepath1.{extension}')
+    path2 = get_test_data_path(f'filepath2.{extension}')
 
-    actual = generate_diff(path_json1, path_json2)
+    actual = generate_diff(path1, path2)
     expected = read_file("expected.txt").strip()
 
     assert actual == expected
