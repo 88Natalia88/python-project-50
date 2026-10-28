@@ -8,6 +8,8 @@
 
 [![asciicast](https://asciinema.org/a/mHVFANIGtq0PHPS4.svg)](https://asciinema.org/a/mHVFANIGtq0PHPS4)
 
+[![asciicast](https://asciinema.org/a/Lf7v9FZEpByK158L.svg)](https://asciinema.org/a/Lf7v9FZEpByK158L)
+
 В этом проекте отрабатывается работа с коллекциями. Изучаются способы построения и обхода деревьев. Вы познакомитесь с разными форматами данных (JSON, YAML), научитесь их парсить и формировать. Начнете писать тесты (pytest) и освоите разработку через них. Познакомитесь с непрерывной интеграцией (CI) и элементами экстремального программирования (XP)
 
 Учебный проект Хекслета: https://ru.hexlet.io/programs/python
