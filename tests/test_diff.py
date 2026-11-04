@@ -42,3 +42,13 @@ def test_generate_diff_plain(extension):
     expected = read_file("expected_plain.txt").strip()
 
     assert actual == expected
+
+@pytest.mark.parametrize("extension", ["json", "yml"])
+def test_generate_diff_json(extension):
+    path1 = get_test_data_path(f'filepath1.{extension}')
+    path2 = get_test_data_path(f'filepath2.{extension}')
+
+    actual = generate_diff(path1, path2, 'json')
+    expected = read_file("expected_json.txt").strip()
+
+    assert actual == expected
