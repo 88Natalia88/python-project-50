@@ -19,9 +19,11 @@
 #         elif item["status"] == "unchanged":
 #             result.append(f"    {item['key']}: {generate_str(item['value'])}")
 
-#         elif item["status"] == "changed":
-#             result.extend([f"  - {item['key']}: {generate_str(item['old_value'])}",
-#                           f"  + {item['key']}: {generate_str(item['new_value'])}"])
+        # elif item["status"] == "changed":
+        #     result.extend([f"  - {item['key']}: 
+        #                    {generate_str(item['old_value'])}",
+        #                   f"  + {item['key']}: 
+        #                   {generate_str(item['new_value'])}"])
             
 #         elif item["status"] == "nested":
 #             list_start = f"{item['key']}: " + "{"
@@ -82,8 +84,10 @@ def format_nodes(diff, depth):
         elif status == "changed":
             old_str = generate_str(item["old_value"], depth)
             new_str = generate_str(item["new_value"], depth)
-            result.append(f"{sign_indent}- {key}: {old_str}")
-            result.append(f"{sign_indent}+ {key}: {new_str}")
+            # result.append(f"{sign_indent}- {key}: {old_str}")
+            # result.append(f"{sign_indent}+ {key}: {new_str}")
+            result.extend((f"{sign_indent}- {key}: {old_str}", 
+                           f"{sign_indent}+ {key}: {new_str}"))
 
         elif status == "nested":
             result.append(f"{indent}{key}: " + "{")

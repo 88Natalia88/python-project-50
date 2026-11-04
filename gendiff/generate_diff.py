@@ -2,21 +2,18 @@
 from pathlib import Path
 
 from gendiff.parser import parse
-
 from gendiff.build_diff import build_diff
-
 from gendiff.formatters.stylish import format_stylish
-
 from gendiff.formatters.plain import format_plain
-
 from gendiff.formatters.json_formatter import format_json
+
 
 def read_file(file_path):
     path = Path(file_path)
     format_content = path.suffix[1:].lower()
     with open(file_path) as file:
         content = file.read()
-    
+    content = Path(file_path).read_text()
     return parse(content, format_content)
 
 

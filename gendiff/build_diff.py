@@ -20,7 +20,8 @@ def build_diff(data1, data2):
                 "value": data2[key]
             })
 
-        elif isinstance(data1.get(key), dict) and isinstance(data2.get(key), dict):
+        elif isinstance(data1.get(key), dict) and isinstance(data2.get(key),
+                                                              dict):
             result.append({
                 "key": key,
                 "status": "nested",

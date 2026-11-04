@@ -21,7 +21,8 @@ def make_plain_lines(diff, current_path=""):
 
         if status == "added":
             val = stringify(item['value'])
-            result.append(f"Property '{property_path}' was added with value: {val}")
+            result.append(f"Property '{property_path}' 
+                          was added with value: {val}")
 
         elif status == "removed":
             result.append(f"Property '{property_path}' was removed")
@@ -30,7 +31,8 @@ def make_plain_lines(diff, current_path=""):
             val_old = stringify(item['old_value'])
             val_new = stringify(item['new_value'])
             result.append(
-                f"Property '{property_path}' was updated. From {val_old} to {val_new}"
+                f"Property '{property_path}' was updated. 
+                From {val_old} to {val_new}"
             )
 
         elif status == "nested":

@@ -2,6 +2,7 @@ import json
 
 import yaml
 
+
 def parse(content, format_content):
     if format_content == 'json':
         return json.loads(content)

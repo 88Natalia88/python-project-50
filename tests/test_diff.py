@@ -23,6 +23,7 @@ def test_generate_diff(extension):
 
     assert actual == expected
 
+
 @pytest.mark.parametrize("extension", ["json", "yml"])
 def test_generate_diff_nested(extension):
     path1 = get_test_data_path(f'file1.{extension}')
@@ -33,6 +34,7 @@ def test_generate_diff_nested(extension):
 
     assert actual == expected
 
+
 @pytest.mark.parametrize("extension", ["json", "yml"])
 def test_generate_diff_plain(extension):
     path1 = get_test_data_path(f'file1.{extension}')
@@ -42,6 +44,7 @@ def test_generate_diff_plain(extension):
     expected = read_file("expected_plain.txt").strip()
 
     assert actual == expected
+
 
 @pytest.mark.parametrize("extension", ["json", "yml"])
 def test_generate_diff_json(extension):
