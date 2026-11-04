@@ -12,17 +12,19 @@ def stringify(value):
 
 def make_plain_lines(diff, current_path=""):
     result = []
-    
+
     for item in diff:
         key = item['key']
         status = item['status']
-        
+
         property_path = f"{current_path}.{key}" if current_path else key
 
         if status == "added":
             val = stringify(item['value'])
-            result.append(f"Property '{property_path}' 
-                          was added with value: {val}")
+            result.append(
+                f"Property '{property_path}' "
+                f"was added with value: {val}"
+            )
 
         elif status == "removed":
             result.append(f"Property '{property_path}' was removed")
@@ -31,8 +33,8 @@ def make_plain_lines(diff, current_path=""):
             val_old = stringify(item['old_value'])
             val_new = stringify(item['new_value'])
             result.append(
-                f"Property '{property_path}' was updated. 
-                From {val_old} to {val_new}"
+                f"Property '{property_path}' was updated. "
+                f"From {val_old} to {val_new}"
             )
 
         elif status == "nested":
@@ -45,4 +47,3 @@ def make_plain_lines(diff, current_path=""):
 def format_plain(diff):
     lines = make_plain_lines(diff)
     return "\n".join(lines)
-
