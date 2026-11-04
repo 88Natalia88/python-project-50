@@ -33,7 +33,6 @@
 #             result.append(f"    {list_start} {list_children} {list_end}")
             
 
-            
 #     return "{\n" + "\n".join(result) + "\n}"
 
 
