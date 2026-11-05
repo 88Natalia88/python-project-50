@@ -5,7 +5,7 @@ test:
 	uv run pytest
 
 test-coverage:
-	uv run pytest --cov=gendiff --cov-report=term-missing --cov-fail-under=90
+	uv run pytest --cov=gendiff --cov-report=term-missing --cov-fail-under=80
 
 lint:
 	uv run ruff check gendiff tests

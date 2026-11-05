@@ -11,8 +11,7 @@ from gendiff.parser import parse
 def read_file(file_path):
     path = Path(file_path)
     format_content = path.suffix[1:].lower()
-    content = Path(file_path).read_text()
-    content = Path(file_path).read_text()
+    content = path.read_text()
     return parse(content, format_content)
 
 

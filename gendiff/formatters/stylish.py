@@ -1,41 +1,3 @@
-# def generate_str(value):
-#     if value is True:
-#         return 'true'
-#     elif value is False:
-#         return 'false'
-#     elif value is None:
-#         return 'null'
-#     return str(value)
-
-# def format_stylish(diff, depth=1):
-#     result = []
-#     for item in diff:
-#         if item["status"] == "removed":
-#             result.append(f"  - {item['key']}: {generate_str(item['value'])}")
-
-#         elif item["status"] == "added":
-#             result.append(f"  + {item['key']}: {generate_str(item['value'])}")
-
-#         elif item["status"] == "unchanged":
-#             result.append(f"    {item['key']}: {generate_str(item['value'])}")
-
-        # elif item["status"] == "changed":
-        #     result.extend([f"  - {item['key']}: 
-        #                    {generate_str(item['old_value'])}",
-        #                   f"  + {item['key']}: 
-        #                   {generate_str(item['new_value'])}"])
-            
-#         elif item["status"] == "nested":
-#             list_start = f"{item['key']}: " + "{"
-#             list_children = format_stylish(item['children'], depth + 1)
-#             list_end = '}'
-
-#             result.append(f"    {list_start} {list_children} {list_end}")
-            
-
-#     return "{\n" + "\n".join(result) + "\n}"
-
-
 def generate_str(value, depth):
     if isinstance(value, bool):
         return str(value).lower()
@@ -83,8 +45,6 @@ def format_nodes(diff, depth):
         elif status == "changed":
             old_str = generate_str(item["old_value"], depth)
             new_str = generate_str(item["new_value"], depth)
-            # result.append(f"{sign_indent}- {key}: {old_str}")
-            # result.append(f"{sign_indent}+ {key}: {new_str}")
             result.extend((f"{sign_indent}- {key}: {old_str}", 
                            f"{sign_indent}+ {key}: {new_str}"))
 
